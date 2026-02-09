@@ -132,7 +132,7 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="p-6 bg-brand-light rounded-2xl border border-brand-dark/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center text-center">
                 <div className="w-40 h-40 rounded-full bg-gradient-to-br from-brand-cyan/20 to-brand-cyan/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Image src="/icons/ai-insights.png" alt="AI Insights" width={120} height={120} className="w-28 h-28 object-contain" />
+                  <Image src="/icons/1.png" alt="AI Insights" width={200} height={200} className="w-28 h-28 object-contain" />
                 </div>
                 <h3 className="text-2xl font-bold text-brand-dark mb-3">AI Tools</h3>
                 <p className="text-brand-dark/80 text-lg">Data-driven insights for smarter planting decisions.</p>
