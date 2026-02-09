@@ -1,6 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
-import { ShieldCheck, Users, Gavel, Scale, FileText, Lock, Eye, Leaf, LineChart, Brain, Palette, Calendar, Megaphone, GraduationCap } from 'lucide-react';
+import { ShieldCheck, Users, Gavel, Scale, FileText, Lock, Eye, Leaf, LineChart, Brain, Palette, Calendar, Megaphone, GraduationCap, ArrowRight } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
 import { Button } from '@/components/ui/Button';
@@ -156,18 +156,15 @@ export default function GovernancePage() {
             {/* Level 3: Departments (Visual Representation only, conceptually under Exec) */}
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-             <div className="bg-brand-surface p-6 rounded-xl border border-brand-dark/5 text-center">
-               <h4 className="font-bold text-brand-dark mb-2">Research & AI</h4>
-               <p className="text-sm text-brand-dark/60">Data scientists, agronomists, and developers building our tools.</p>
-             </div>
-             <div className="bg-brand-surface p-6 rounded-xl border border-brand-dark/5 text-center">
-               <h4 className="font-bold text-brand-dark mb-2">Creative Studio</h4>
-               <p className="text-sm text-brand-dark/60">Designers, writers, and filmmakers telling the climate story.</p>
-             </div>
-             <div className="bg-brand-surface p-6 rounded-xl border border-brand-dark/5 text-center">
-               <h4 className="font-bold text-brand-dark mb-2">Community Outreach</h4>
-               <p className="text-sm text-brand-dark/60">Coordinators managing our clubs and farmer networks.</p>
+          <div className="mt-20">
+             <div className="text-center max-w-3xl mx-auto mb-16">
+               <h2 className="text-3xl font-bold font-heading text-brand-dark mb-6">Departments & Leadership</h2>
+               <p className="text-lg text-brand-dark/80 mb-8">
+                 Our operational engines. Each department is led by a dedicated director or officer to ensure focused impact and accountability.
+               </p>
+               <Button href="/departments" variant="primary" size="lg" icon={<ArrowRight className="w-5 h-5" />}>
+                 View All Departments
+               </Button>
              </div>
           </div>
         </Container>

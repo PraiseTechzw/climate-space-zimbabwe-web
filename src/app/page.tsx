@@ -48,36 +48,44 @@ export default function Home() {
             <div className="relative hidden lg:block">
                <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-4 translate-y-8">
-                     <div className="h-64 bg-stone-100 rounded-2xl overflow-hidden relative group border border-stone-200">
+                     <div className="h-64 bg-stone-100 rounded-2xl overflow-hidden relative group border border-stone-200 shadow-lg hover:shadow-2xl transition-all duration-500">
                         <Image 
-                          src="https://images.unsplash.com/photo-1592982537496-c5c62e8260d7?auto=format&fit=crop&w=1200&q=100"
+                          src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1200&q=80"
                           alt="Smart Farming - Maize Field"
                           fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-80" />
-                        <div className="absolute bottom-4 left-4 right-4">
-                           <p className="text-white text-sm font-bold">Smart Farming</p>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                        <div className="absolute bottom-4 left-4 right-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                           <p className="text-white text-sm font-bold tracking-wide flex items-center gap-2">
+                             <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
+                             Smart Farming
+                           </p>
                         </div>
                      </div>
-                     <div className="h-48 bg-brand-green/5 rounded-2xl overflow-hidden relative flex items-center justify-center border border-brand-green/10">
-                        <Sprout className="w-12 h-12 text-brand-green opacity-50" />
+                     <div className="h-48 bg-gradient-to-br from-brand-green/10 to-brand-green/5 rounded-2xl overflow-hidden relative flex items-center justify-center border border-brand-green/20 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300 group">
+                        <div className="absolute inset-0 bg-white/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <Sprout className="w-16 h-16 text-brand-green drop-shadow-sm transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500" />
                      </div>
                   </div>
                   <div className="space-y-4">
-                     <div className="h-48 bg-brand-gold/5 rounded-2xl overflow-hidden relative flex items-center justify-center border border-brand-gold/10">
-                        <Palette className="w-12 h-12 text-brand-gold opacity-50" />
+                     <div className="h-48 bg-gradient-to-br from-brand-gold/10 to-brand-gold/5 rounded-2xl overflow-hidden relative flex items-center justify-center border border-brand-gold/20 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300 group">
+                        <div className="absolute inset-0 bg-white/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <Palette className="w-16 h-16 text-brand-gold drop-shadow-sm transform group-hover:scale-110 group-hover:-rotate-3 transition-all duration-500" />
                      </div>
-                     <div className="h-64 bg-stone-100 rounded-2xl overflow-hidden relative group border border-stone-200">
+                     <div className="h-64 bg-stone-100 rounded-2xl overflow-hidden relative group border border-stone-200 shadow-lg hover:shadow-2xl transition-all duration-500">
                          <Image 
-                           src="https://images.unsplash.com/photo-1560964645-4c9570117465?auto=format&fit=crop&w=1200&q=100"
-                           alt="Community Art - Abstract Expression"
-                           fill
-                           className="object-cover transition-transform duration-500 group-hover:scale-110"
-                         />
-                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-80" />
-                         <div className="absolute bottom-4 left-4 right-4">
-                           <p className="text-white text-sm font-bold">Community Art</p>
+                          src="https://images.unsplash.com/photo-1570095378004-ce65d6c2d5bb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=1200&q=80"
+                          alt="Climate Justice Now - Community Art"
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                         <div className="absolute bottom-4 left-4 right-4 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                           <p className="text-white text-sm font-bold tracking-wide flex items-center gap-2">
+                             <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
+                             Community Art
+                           </p>
                         </div>
                      </div>
                   </div>
@@ -91,32 +99,48 @@ export default function Home() {
       </section>
 
       {/* 2. THE PROBLEM VS SOLUTION */}
-      <Section variant="white">
+      <Section variant="white" className="relative overflow-hidden">
+        {/* Background decorative element for the Challenge section */}
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-1/3 h-full bg-gradient-to-r from-red-50/50 to-transparent -z-10 blur-3xl opacity-60" />
+
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-light rounded-full text-brand-green font-bold text-sm mb-6">
+            <div className="relative">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-50 border border-red-100 rounded-full text-red-600 font-bold text-sm mb-6 animate-fade-in">
                 <CloudRain className="w-4 h-4" />
-                <span>The Challenge</span>
+                <span>The Reality</span>
               </div>
-              <h2 className="text-4xl font-bold font-heading text-brand-dark mb-6">
-                The rains are changing. <br/>Are we?
+              <h2 className="text-4xl lg:text-5xl font-bold font-heading text-brand-dark mb-6 leading-tight">
+                The rains are changing. <br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">Are we?</span>
               </h2>
-              <p className="text-lg text-brand-dark/80 mb-6 leading-relaxed">
-                For generations, our farmers relied on predictable seasons. Today, those patterns are broken. Droughts are longer, and storms are stronger.
-              </p>
-              <p className="text-lg text-brand-dark/80 leading-relaxed font-medium">
-                We don't just talk about the problem. We build the structural response.
-              </p>
+              <div className="prose prose-lg text-brand-dark/80 mb-8">
+                <p className="leading-relaxed">
+                  For generations, our farmers relied on predictable seasons. Today, those patterns are <span className="font-semibold text-red-500">broken</span>. 
+                </p>
+                <p className="leading-relaxed">
+                  Droughts are longer. Storms are stronger. The old ways of predicting the harvest no longer work.
+                </p>
+              </div>
+              <div className="flex items-center gap-4 text-brand-dark/60 font-medium border-l-4 border-brand-green pl-4">
+                <p>
+                  We don't just talk about the problem. <br/>
+                  <span className="text-brand-dark font-bold">We build the structural response.</span>
+                </p>
+              </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="p-6 bg-brand-light rounded-2xl border border-brand-dark/10">
-                <Cpu className="w-10 h-10 text-brand-cyan mb-4" />
+              <div className="p-6 bg-brand-light rounded-2xl border border-brand-dark/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand-cyan/20 to-brand-cyan/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Image src="/icons/ai-insights.png" alt="AI Insights" width={32} height={32} className="w-8 h-8 object-contain" />
+                </div>
                 <h3 className="text-xl font-bold text-brand-dark mb-2">AI Tools</h3>
                 <p className="text-brand-dark/80">Data-driven insights for smarter planting decisions.</p>
               </div>
-              <div className="p-6 bg-brand-light rounded-2xl border border-brand-dark/10">
-                <Palette className="w-10 h-10 text-brand-gold mb-4" />
+              <div className="p-6 bg-brand-light rounded-2xl border border-brand-dark/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand-gold/20 to-brand-gold/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Image src="/icons/storytelling.png" alt="Storytelling" width={32} height={32} className="w-8 h-8 object-contain" />
+                </div>
                 <h3 className="text-xl font-bold text-brand-dark mb-2">Creative Action</h3>
                 <p className="text-brand-dark/80">Storytelling that makes climate science accessible to all.</p>
               </div>
@@ -191,20 +215,22 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Art Cards */}
             {[
-              { id: 1, title: "The Drought's End", type: "Digital Illustration", src: "https://images.unsplash.com/photo-1504370805625-d32c54b16100?auto=format&fit=crop&w=1200&q=100" },
-              { id: 2, title: "Solar Future", type: "Photography", src: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=100" },
-              { id: 3, title: "Green Hope", type: "Mixed Media", src: "https://images.unsplash.com/photo-1457530378978-8bac673b8062?auto=format&fit=crop&w=1200&q=100" }
+              { id: 1, title: "The Drought's End", type: "Digital Illustration", src: "https://images.unsplash.com/photo-1533587851505-d119e13fa0d7?auto=format&fit=crop&w=1200&q=80" },
+              { id: 2, title: "Solar Future", type: "Photography", src: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80" },
+              { id: 3, title: "Green Hope", type: "Mixed Media", src: "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=1200&q=80" }
             ].map((item) => (
-              <div key={item.id} className="group relative aspect-[4/5] bg-brand-light rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all">
+              <div key={item.id} className="group relative aspect-[4/5] bg-brand-light rounded-2xl overflow-hidden shadow-md hover:shadow-2xl border border-brand-dark/5 transition-all duration-500 hover:-translate-y-2">
                 <Image 
                   src={item.src}
                   alt={item.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-6">
-                  <h4 className="text-white font-bold text-lg">{item.title}</h4>
-                  <p className="text-white/80 text-sm">{item.type}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                  <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    <h4 className="text-white font-bold text-xl mb-1">{item.title}</h4>
+                    <p className="text-white/80 text-sm font-medium tracking-wide uppercase">{item.type}</p>
+                  </div>
                 </div>
               </div>
             ))}

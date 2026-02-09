@@ -10,3 +10,5 @@
 {"timestamp":"2026-02-06T20:30:22.981Z","type":"FOCUS_SWITCH","from":"src/app/privacy/page.tsx","to":"src/app/terms/page.tsx","prevFileActiveMs":0}
 {"timestamp":"2026-02-06T20:30:37.467Z","type":"FOCUS_HEARTBEAT","file":"src/app/sitemap/page.tsx","activeMs":0,"totalActiveMs":345465}
 {"timestamp":"2026-02-06T20:30:37.467Z","type":"FOCUS_SWITCH","from":"src/app/terms/page.tsx","to":"src/app/sitemap/page.tsx","prevFileActiveMs":0}
+{"timestamp":"2026-02-06T20:40:46.068Z","type":"FOCUS_SESSION_END","totalActiveMs":345465,"durationMs":954066}
+{"timestamp":"2026-02-09T07:43:10.792Z","type":"FOCUS_HEARTBEAT","file":"src/app/page.tsx","activeMs":0,"totalActiveMs":87940}

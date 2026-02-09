@@ -83,7 +83,7 @@ export default function CreativeSpacePage() {
             {/* Art Item 3 */}
             <div className="group relative overflow-hidden rounded-2xl aspect-square bg-brand-dark/5">
                <Image 
-                 src="https://images.unsplash.com/photo-1457530378978-8bac673b8062?auto=format&fit=crop&w=1200&q=100"
+                 src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=1200&q=80"
                  alt="Green Shoots"
                  fill
                  className="object-cover transition-transform duration-500 group-hover:scale-110"
