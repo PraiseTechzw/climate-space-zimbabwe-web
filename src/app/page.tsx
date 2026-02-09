@@ -130,19 +130,19 @@ export default function Home() {
               </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="p-6 bg-brand-light rounded-2xl border border-brand-dark/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand-cyan/20 to-brand-cyan/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Image src="/icons/ai-insights.png" alt="AI Insights" width={32} height={32} className="w-8 h-8 object-contain" />
+              <div className="p-6 bg-brand-light rounded-2xl border border-brand-dark/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center text-center">
+                <div className="w-40 h-40 rounded-full bg-gradient-to-br from-brand-cyan/20 to-brand-cyan/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Image src="/icons/ai-insights.png" alt="AI Insights" width={120} height={120} className="w-28 h-28 object-contain" />
                 </div>
-                <h3 className="text-xl font-bold text-brand-dark mb-2">AI Tools</h3>
-                <p className="text-brand-dark/80">Data-driven insights for smarter planting decisions.</p>
+                <h3 className="text-2xl font-bold text-brand-dark mb-3">AI Tools</h3>
+                <p className="text-brand-dark/80 text-lg">Data-driven insights for smarter planting decisions.</p>
               </div>
-              <div className="p-6 bg-brand-light rounded-2xl border border-brand-dark/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-brand-gold/20 to-brand-gold/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Image src="/icons/storytelling.png" alt="Storytelling" width={32} height={32} className="w-8 h-8 object-contain" />
+              <div className="p-6 bg-brand-light rounded-2xl border border-brand-dark/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col items-center text-center">
+                <div className="w-40 h-40 rounded-full bg-gradient-to-br from-brand-gold/20 to-brand-gold/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Image src="/icons/storytelling.png" alt="Storytelling" width={120} height={120} className="w-28 h-28 object-contain" />
                 </div>
-                <h3 className="text-xl font-bold text-brand-dark mb-2">Creative Action</h3>
-                <p className="text-brand-dark/80">Storytelling that makes climate science accessible to all.</p>
+                <h3 className="text-2xl font-bold text-brand-dark mb-3">Creative Action</h3>
+                <p className="text-brand-dark/80 text-lg">Storytelling that makes climate science accessible to all.</p>
               </div>
             </div>
           </div>
