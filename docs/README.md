@@ -1,6 +1,10 @@
-# Climate Space Zimbabwe | Documentation Hub
+# 📖 Documentation Hub
+### *Climate Space Zimbabwe Strategic & Technical Knowledge*
 
-Welcome to the central knowledge repository for Climate Space Zimbabwe (Hurudzai AI).
+Welcome to the central knowledge repository for Climate Space Zimbabwe (Hurudzai AI). Here you will find our core DNA, tactical strategies, and technical specifications.
+
+---
+
 
 ## 🧭 Project Basics
 *   **[Setup & Development](SETUP.md)**: Get the project running locally.
