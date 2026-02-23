@@ -9,17 +9,27 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: React.ReactNode;
 }
 
-export function Button({ 
-  className, 
-  variant = 'primary', 
-  size = 'md', 
-  href, 
+/**
+ * Primary Button component for the Climate Space Zimbabwe design system.
+ * It supports various visual variants, sizes, and can act as either a button or a link.
+ * 
+ * @param variant - Visual style of the button (primary, secondary, outline, ghost, accent)
+ * @param size - Size of the button (sm, md, lg)
+ * @param href - If provided, the button will be rendered as a Next.js Link
+ * @param icon - Optional icon to be displayed after the children
+ */
+export function Button({
+  className,
+  variant = 'primary',
+  size = 'md',
+  href,
   icon,
-  children, 
-  ...props 
+  children,
+  ...props
 }: ButtonProps) {
+
   const baseStyles = "inline-flex items-center justify-center font-bold rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
-  
+
   const variants = {
     primary: "bg-brand-green text-white hover:bg-brand-green/90 focus:ring-brand-green",
     secondary: "bg-brand-dark text-white hover:bg-brand-dark/90 focus:ring-brand-dark",

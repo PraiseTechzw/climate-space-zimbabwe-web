@@ -1,9 +1,15 @@
+import { Metadata } from 'next';
 import React from 'react';
 import Image from 'next/image';
 import { ArrowRight, Sprout, Cpu, Palette, Users, BarChart3, CloudRain } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
+
+export const metadata: Metadata = {
+  title: 'Climate Space Zimbabwe - Home',
+  description: 'Youth-led movement fusing AI with Creative Arts to build climate resilience in Zimbabwe. Explore our solutions, creative gallery, and get involved.',
+};
 
 export default function Home() {
   return (
@@ -38,7 +44,7 @@ export default function Home() {
                   <Button href="/solutions" variant="primary" size="lg" className="rounded-full px-8 shadow-lg hover:shadow-xl transition-all">
                     Our Solutions
                   </Button>
-                  <Button href="/creative" variant="outline" size="lg" className="rounded-full px-8">
+                  <Button href="/creative-space" variant="outline" size="lg" className="rounded-full px-8">
                      View Gallery
                   </Button>
                </div>
@@ -134,7 +140,7 @@ export default function Home() {
               <div className="group relative p-8 rounded-3xl bg-white/80 backdrop-blur-sm border border-white/40 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col items-center text-center">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="w-40 h-40 rounded-full bg-gradient-to-br from-brand-cyan/20 to-brand-cyan/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg relative z-10">
-                  <Image src="/icons/rocket-3d.png" alt="AI Insights" width={200} height={200} className="w-28 h-28 object-contain drop-shadow-md" />
+                  <Image src="/icons/rocket-3d.png" alt="AI Insights" width={200} height={200} className="w-28 h-28 object-contain drop-shadow-md" priority />
                 </div>
                 <h3 className="text-2xl font-bold text-brand-dark mb-3 relative z-10">AI Insights</h3>
                 <p className="text-lg text-brand-dark/70 relative z-10">
@@ -146,7 +152,7 @@ export default function Home() {
               <div className="group relative p-8 rounded-3xl bg-white/80 backdrop-blur-sm border border-white/40 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 flex flex-col items-center text-center">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="w-40 h-40 rounded-full bg-gradient-to-br from-brand-purple/20 to-brand-purple/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg relative z-10">
-                  <Image src="/icons/palette-3d.png" alt="Creative Action" width={200} height={200} className="w-28 h-28 object-contain drop-shadow-md" />
+                  <Image src="/icons/palette-3d.png" alt="Creative Action" width={200} height={200} className="w-28 h-28 object-contain drop-shadow-md" priority />
                 </div>
                 <h3 className="text-2xl font-bold text-brand-dark mb-3 relative z-10">Creative Action</h3>
                 <p className="text-lg text-brand-dark/70 relative z-10">

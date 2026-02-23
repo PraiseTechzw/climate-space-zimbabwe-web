@@ -1,17 +1,26 @@
-# Climate Space Zimbabwe Documentation
+# Climate Space Zimbabwe | Documentation Hub
 
-This directory contains the core strategic, design, and technical documentation for Climate Space Zimbabwe.
+Welcome to the central knowledge repository for Climate Space Zimbabwe (Hurudzai AI).
+
+## 🧭 Project Basics
+*   **[Setup & Development](SETUP.md)**: Get the project running locally.
+*   **[Technical Architecture](ARCHITECTURE.md)**: Tech stack and folder structure.
+*   **[Product Catalog](PRODUCTS.md)**: Overview of our AI and digital solutions.
 
 ## 🎨 Brand & Identity
-*   **[Brand DNA](BRAND_DNA.md)**: Our Core Purpose, Values, Personality, and Promise.
-*   **[Visual Identity](VISUAL_IDENTITY.md)**: Color palette, typography, logo usage, and design system.
-*   **[Content Guide](CONTENT_GUIDE.md)**: Voice, tone, and writing guidelines for all communications.
+*   **[Brand DNA](BRAND_DNA.md)**: Our Core Purpose, Values, and personality.
+*   **[Visual Identity](VISUAL_IDENTITY.md)**: Color palette and design guidelines.
+*   **[Content Guide](CONTENT_GUIDE.md)**: Voice and tone for communications.
 
-## 🏛️ Strategy & Governance
-*   **[Governance Structure](GOVERNANCE_STRUCTURE.md)**: Leadership hierarchy, ethics, and accountability protocols.
-*   **[Community Strategy](COMMUNITY_STRATEGY.md)**: Membership tiers, club formation, and grassroots growth.
-*   **[Creative Space Strategy](CREATIVE_SPACE_STRATEGY.md)**: Strategy for art, digital galleries, and exhibitions.
+## 🏛️ Strategy & Operations
+*   **[Governance Structure](GOVERNANCE_STRUCTURE.md)**: Leadership and ethics.
+*   **[Community Strategy](COMMUNITY_STRATEGY.md)**: How we grow and scale.
+*   **[Creative Strategy](CREATIVE_SPACE_STRATEGY.md)**: Art and digital gallery plans.
 
-## 🏗️ Architecture & Tech
-*   **[Sitemap](SITEMAP.md)**: Website structure, user flows, and page purposes.
-*   **[AI Feature Spec](AI_FEATURE_SPEC.md)**: Specifications for the Agri-Search Engine and other AI tools.
+## 🏗️ Technical Specs
+*   **[Sitemap](SITEMAP.md)**: Navigation and page structure.
+*   **[AI Feature Spec](AI_FEATURE_SPEC.md)**: Deep dive into AI implementation.
+
+---
+*Last Updated: February 2026*
+

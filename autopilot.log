@@ -30,3 +30,7 @@
 {"timestamp":"2026-02-09T08:17:45.117Z","type":"FOCUS_COMMIT","msSinceLastCommit":0}
 {"timestamp":"2026-02-09T08:17:50.892Z","type":"FOCUS_SESSION_END","totalActiveMs":1242929,"durationMs":2168040}
 {"timestamp":"2026-02-09T08:21:13.474Z","type":"FOCUS_SESSION_END","totalActiveMs":0,"durationMs":4814}
+{"timestamp":"2026-02-23T18:55:03.628Z","type":"FOCUS_SESSION_END","totalActiveMs":0,"durationMs":275}
+{"timestamp":"2026-02-23T18:55:48.008Z","type":"FOCUS_SESSION_END","totalActiveMs":0,"durationMs":99}
+{"timestamp":"2026-02-23T18:55:57.001Z","type":"FOCUS_SESSION_END","totalActiveMs":0,"durationMs":108}
+{"timestamp":"2026-02-23T18:56:04.442Z","type":"FOCUS_SESSION_END","totalActiveMs":0,"durationMs":108}
