@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(data);
     } catch (error: any) {
         if (error instanceof z.ZodError) {
-            return NextResponse.json({ error: "Invalid input", details: error.errors }, { status: 400 });
+            return NextResponse.json({ error: "Invalid input", details: (error as any).errors }, { status: 400 });
         }
         console.error(`[AI Search API] Internal error. ID: ${reqId}`, error);
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });

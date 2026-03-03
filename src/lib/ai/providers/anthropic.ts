@@ -1,4 +1,5 @@
 import { IProvider, ChatRequest, ChatResponse, EmbedRequest, EmbedResponse, HealthStatus } from "./IProvider";
+import Anthropic from "@anthropic-ai/sdk";
 
 export class AnthropicProvider implements IProvider {
     id = "anthropic";
@@ -13,13 +14,13 @@ export class AnthropicProvider implements IProvider {
     };
     pricingHints = { inputPer1M: 0.25, outputPer1M: 1.25 };
 
-    private getClient() {
-        const Anthropic = require("@anthropic-ai/sdk").default;
-        return new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+    private client: Anthropic;
+    constructor() {
+        this.client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY || "dummy_key" });
     }
 
     async chat(req: ChatRequest): Promise<ChatResponse> {
-        const client = this.getClient();
+        const client = this.client;
         const model = req.modelHint || "claude-3-haiku-20240307";
 
         let sysMsg = "";
@@ -40,7 +41,7 @@ export class AnthropicProvider implements IProvider {
         });
 
         return {
-            content: response.content[0].text,
+            content: response.content[0].type === "text" ? response.content[0].text : "",
             provider: this.id,
             model,
             usage: {
@@ -58,7 +59,7 @@ export class AnthropicProvider implements IProvider {
         try {
             // Just check models or something quick. For Anthropic there is no /models list in v1 usually, we can test with a tiny token
             const start = Date.now();
-            await this.getClient().messages.create({
+            await this.client.messages.create({
                 model: "claude-3-haiku-20240307",
                 messages: [{ role: "user", content: "hi" }],
                 max_tokens: 1

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Send, Image as ImageIcon, MapPin, Leaf, FileImage, Loader2, Bot, User, CheckCircle2, ShieldAlert } from "lucide-react";
+import { Send, Image as ImageIcon, MapPin, Leaf, FileImage, Loader2, Bot, User, CheckCircle2, ShieldAlert, Navigation } from "lucide-react";
 
 type Message = {
     id: string;
@@ -27,6 +27,49 @@ export default function AgriSearchPage() {
     const [input, setInput] = useState("");
     const [location, setLocation] = useState("Harare");
     const [crop, setCrop] = useState("Maize");
+    const [isLocating, setIsLocating] = useState(false);
+
+    const handleAutoLocate = () => {
+        if (!navigator.geolocation) {
+            alert("Geolocation is not supported by your browser");
+            return;
+        }
+        setIsLocating(true);
+        navigator.geolocation.getCurrentPosition(
+            async (position) => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+
+                try {
+                    // Reverse geocoding to get a user-friendly name
+                    const res = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`);
+                    const data = await res.json();
+
+                    const cityOrLocality = data.city || data.locality;
+                    const province = data.principalSubdivision;
+
+                    if (cityOrLocality && province) {
+                        setLocation(`${cityOrLocality}, ${province}, ${data.countryCode}`);
+                    } else if (cityOrLocality || province) {
+                        setLocation(`${cityOrLocality || province}, ${data.countryCode}`);
+                    } else {
+                        setLocation(`${lat.toFixed(2)}, ${lon.toFixed(2)}`);
+                    }
+                } catch (error) {
+                    console.error("Reverse geocoding failed", error);
+                    // Fallback to coordinates if API fails
+                    setLocation(`${lat.toFixed(2)}, ${lon.toFixed(2)}`);
+                }
+                setIsLocating(false);
+            },
+            (error) => {
+                console.error(error);
+                alert("Unable to retrieve your location. Please check browser permissions.");
+                setIsLocating(false);
+            },
+            { timeout: 10000 }
+        );
+    };
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -119,7 +162,7 @@ export default function AgriSearchPage() {
     };
 
     return (
-        <div className="flex h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 flex-col md:flex-row font-sans">
+        <div className="flex h-[calc(100vh-7rem)] mt-28 bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 flex-col md:flex-row font-sans rounded-tl-3xl rounded-tr-3xl overflow-hidden mx-auto max-w-7xl shadow-xl border border-slate-200 dark:border-slate-800">
 
             {/* Sidebar for Location/Crop Preferences */}
             <aside className="w-full md:w-80 bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 p-6 flex flex-col gap-8 shrink-0">
@@ -141,19 +184,23 @@ export default function AgriSearchPage() {
                                 <MapPin className="w-4 h-4 text-emerald-500" />
                                 Current Location
                             </label>
-                            <select
-                                value={location}
-                                onChange={e => setLocation(e.target.value)}
-                                className="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-lg p-3 text-sm focus:ring-2 focus:ring-emerald-500"
-                            >
-                                <option value="Harare">Harare</option>
-                                <option value="Bulawayo">Bulawayo</option>
-                                <option value="Mashonaland West">Mashonaland West</option>
-                                <option value="Manicaland">Manicaland</option>
-                                <option value="Masvingo">Masvingo</option>
-                                <option value="Matabeleland South">Matabeleland South</option>
-                                <option value="">No Location</option>
-                            </select>
+                            <div className="flex gap-2">
+                                <input
+                                    type="text"
+                                    value={location}
+                                    onChange={e => setLocation(e.target.value)}
+                                    placeholder="Enter city e.g. Harare"
+                                    className="w-full bg-slate-100 dark:bg-slate-900 border-none rounded-lg p-3 text-sm focus:ring-2 focus:ring-emerald-500"
+                                />
+                                <button
+                                    onClick={handleAutoLocate}
+                                    disabled={isLocating}
+                                    title="Auto-Locate"
+                                    className="p-3 bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 rounded-lg hover:bg-emerald-200 transition-colors shrink-0 disabled:opacity-50 flex items-center justify-center"
+                                >
+                                    {isLocating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Navigation className="w-4 h-4" />}
+                                </button>
+                            </div>
                         </div>
 
                         <div className="space-y-2">
@@ -204,8 +251,8 @@ export default function AgriSearchPage() {
                             <div className={`flex flex-col gap-2 ${m.role === "user" ? "items-end" : "items-start"} max-w-full`}>
                                 <div
                                     className={`px-6 py-4 rounded-3xl shadow-sm text-[15px] leading-relaxed relative ${m.role === "user"
-                                            ? "bg-slate-800 text-white rounded-br-sm max-w-[85%]"
-                                            : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-bl-sm"
+                                        ? "bg-slate-800 text-white rounded-br-sm max-w-[85%]"
+                                        : "bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-bl-sm"
                                         }`}
                                 >
                                     <div className="whitespace-pre-wrap">{m.content}</div>

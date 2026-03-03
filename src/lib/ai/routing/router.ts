@@ -24,11 +24,11 @@ export class IntelligentRouter {
     private failCounts: Map<string, number> = new Map();
 
     constructor() {
-        this.register(new OpenAIProvider());
-        this.register(new AnthropicProvider());
-        this.register(new GeminiProvider());
+        // this.register(new OpenAIProvider());
+        // this.register(new AnthropicProvider());
+        // this.register(new GeminiProvider());
         this.register(new OllamaProvider());
-        this.register(new MetaProvider());
+        // this.register(new MetaProvider());
     }
 
     private register(provider: IProvider) {
@@ -122,9 +122,9 @@ export class IntelligentRouter {
 
     getHealthSummary() {
         const result: any = {};
-        for (const [id, count] of this.failCounts.entries()) {
+        this.failCounts.forEach((count, id) => {
             result[id] = count < 3 ? "ok" : "circuit_open";
-        }
+        });
         return result;
     }
 }

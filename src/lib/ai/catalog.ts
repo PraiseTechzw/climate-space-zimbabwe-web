@@ -55,12 +55,12 @@ export const modelCatalog: ModelCatalogEntry[] = [
     },
     {
         providerId: "ollama",
-        modelId: "llama3",
-        supports: { vision: false, tools: false, json: true, embeddings: false },
-        recommendedTasks: ["rag_qa", "classify"],
+        modelId: "gemma3:12b",
+        supports: { vision: true, tools: false, json: true, embeddings: false },
+        recommendedTasks: ["rag_qa", "classify", "summarize"],
         defaultTemperature: 0.7,
-        maxTokens: 2048,
-        privacyTier: "local_only",
+        maxTokens: 8192,
+        privacyTier: "cloud_ok",
     },
     {
         providerId: "meta",

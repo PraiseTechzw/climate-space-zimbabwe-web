@@ -51,7 +51,9 @@ ${visionNote}
                         answerMarkdown: { type: "string" },
                         actionChecklist: { type: "array", items: { type: "string" } },
                         followUpQuestions: { type: "array", items: { type: "string" } }
-                    }
+                    },
+                    required: ["answerMarkdown", "actionChecklist", "followUpQuestions"],
+                    additionalProperties: false
                 }
             }, constraints);
 

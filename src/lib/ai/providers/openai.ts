@@ -17,7 +17,7 @@ export class OpenAIProvider implements IProvider {
     private client: OpenAI;
 
     constructor() {
-        this.client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+        this.client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || "dummy_key" });
     }
 
     async chat(req: ChatRequest): Promise<ChatResponse> {

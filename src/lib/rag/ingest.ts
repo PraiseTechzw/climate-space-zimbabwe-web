@@ -1,5 +1,5 @@
-import { aiRouter } from "../../ai/routing";
-import { supabaseAdmin } from "../../supabase";
+import { aiRouter } from "../ai/routing/router";
+import { supabaseAdmin } from "../supabase";
 
 interface IngestOptions {
     content: string;
@@ -21,8 +21,8 @@ export async function ingestDocument({ content, metadata, chunkSize = 1000, over
     console.log(`[Ingest] Chunking complete: ${chunks.length} chunks generated.`);
 
     for (const chunk of chunks) {
-        const rawEmbeddings = await aiRouter.generateEmbeddings([chunk]);
-        const embedding = rawEmbeddings[0];
+        const rawEmbeddings = await aiRouter.embed({ texts: [chunk] });
+        const embedding = rawEmbeddings.embeddings[0];
 
         // Store in Supabase
         const { error } = await supabaseAdmin.from("documents").insert({

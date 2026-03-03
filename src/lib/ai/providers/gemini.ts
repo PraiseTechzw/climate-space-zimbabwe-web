@@ -1,4 +1,5 @@
 import { IProvider, ChatRequest, ChatResponse, EmbedRequest, EmbedResponse, HealthStatus } from "./IProvider";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export class GeminiProvider implements IProvider {
     id = "gemini";
@@ -13,13 +14,13 @@ export class GeminiProvider implements IProvider {
     };
     pricingHints = { inputPer1M: 0.1, outputPer1M: 0.5 };
 
-    private getClient() {
-        const { GoogleGenerativeAI } = require("@google/generative-ai");
-        return new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    private client: GoogleGenerativeAI;
+    constructor() {
+        this.client = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
     }
 
     async chat(req: ChatRequest): Promise<ChatResponse> {
-        const genAI = this.getClient();
+        const genAI = this.client;
         const modelHint = req.modelHint || "gemini-1.5-flash";
         const model = genAI.getGenerativeModel({ model: modelHint });
 
@@ -50,7 +51,7 @@ export class GeminiProvider implements IProvider {
     }
 
     async embed(req: EmbedRequest): Promise<EmbedResponse> {
-        const genAI = this.getClient();
+        const genAI = this.client;
         const modelHint = req.modelHint || "text-embedding-004";
         const model = genAI.getGenerativeModel({ model: modelHint });
 
@@ -68,7 +69,7 @@ export class GeminiProvider implements IProvider {
 
     async healthcheck(): Promise<HealthStatus> {
         try {
-            const genAI = this.getClient();
+            const genAI = this.client;
             const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
             const start = Date.now();
             await model.generateContent("hi");

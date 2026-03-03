@@ -15,9 +15,9 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="inline-block mb-6 transition-opacity hover:opacity-90" aria-label="Climate Space Zimbabwe Home">
               <div className="relative h-24 w-72 bg-white rounded-2xl p-2">
-                <Image 
-                  src="/logo.png" 
-                  alt="Climate Space Zimbabwe" 
+                <Image
+                  src="/logo.png"
+                  alt="Climate Space Zimbabwe"
                   fill
                   className="object-contain object-center"
                 />
@@ -30,7 +30,7 @@ export default function Footer() {
               Modern. Eco-Tech. African. Impactful.
             </p>
           </div>
-          
+
           {/* Navigation */}
           <div>
             <h3 className="text-sm font-bold text-brand-surface tracking-wider uppercase mb-6 font-heading">Explore</h3>
@@ -72,6 +72,13 @@ export default function Footer() {
                   Instagram
                 </a>
               </li>
+              <li>
+                <a href="https://www.youtube.com/climatepacezimbabwe?igsh=enVycWZ4cXJzMjcx" target="_blank" rel="noopener noreferrer" className="text-brand-surface/70 hover:text-brand-gold transition-colors text-sm block py-1">
+                YouTube                </a>
+              </li>
+              <li>
+                <a  href='https://www.linkedin.com' target='_blank' rel='noopener noreferrer' className='texy-brand-surface/70 hover:text-brand-gold transition-colors text-sm block py-1'>LinkedIn</a>
+              </li>
             </ul>
           </div>
         </div>
@@ -79,7 +86,8 @@ export default function Footer() {
         {/* Utility Bar */}
         <div className="border-t border-brand-surface/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-brand-surface/50 text-sm">
-            &copy; {currentYear} Climate Space Zimbabwe. All rights reserved.
+            &copy; {currentYear} Climate Space Zimbabwe AI Department. All rights reserved. {"   "}
+            <Link href={"https://praisetech.tech"} className="hover:text-brand-surface text-brand-surface ">Made by Praise Masunga</Link>
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-sm text-brand-surface/50">
             <Link href="/privacy" className="hover:text-brand-surface transition-colors">Privacy Policy</Link>

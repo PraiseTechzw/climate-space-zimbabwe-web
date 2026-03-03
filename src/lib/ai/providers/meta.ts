@@ -18,7 +18,7 @@ export class MetaProvider implements IProvider {
 
     constructor() {
         this.client = new OpenAI({
-            apiKey: process.env.META_API_KEY || process.env.OPENAI_API_KEY,
+            apiKey: process.env.META_API_KEY || process.env.OPENAI_API_KEY || "dummy_key",
             baseURL: process.env.META_BASE_URL || process.env.OPENAI_COMPAT_BASE_URL
         });
     }
