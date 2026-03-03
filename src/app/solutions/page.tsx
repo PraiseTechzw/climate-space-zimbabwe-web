@@ -1,6 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
-import { Search, CloudSun, Bug, ShieldAlert, ArrowRight, BrainCircuit, Sprout } from 'lucide-react';
+import { Search, CloudSun, Bug, ShieldAlert, ArrowRight, BrainCircuit, Sprout, Globe } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Section } from '@/components/ui/Section';
 import { Button } from '@/components/ui/Button';
@@ -42,7 +42,7 @@ export default function SolutionsPage() {
       {/* 1.5 LIVE DEMO */}
       <Section variant="white" className="pt-0 -mt-12 relative z-10">
         <Container>
-           <AgriSearchTool />
+          <AgriSearchTool />
         </Container>
       </Section>
 
@@ -56,7 +56,7 @@ export default function SolutionsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Feature 1: Agri-Search */}
             <div className="bg-brand-surface p-8 rounded-2xl shadow-sm border border-brand-dark/5 hover:shadow-md transition-shadow">
               <div className="w-14 h-14 bg-brand-green/10 rounded-xl flex items-center justify-center mb-6">
@@ -67,8 +67,8 @@ export default function SolutionsPage() {
                 Ask questions in plain English or local languages. Get answers about planting seasons, soil types, and crop varieties specific to your region.
               </p>
               <ul className="space-y-2 text-sm text-brand-dark/60">
-                <li className="flex items-center gap-2"><Sprout className="w-4 h-4 text-brand-green"/> Crop recommendations</li>
-                <li className="flex items-center gap-2"><Sprout className="w-4 h-4 text-brand-green"/> Soil preparation tips</li>
+                <li className="flex items-center gap-2"><Sprout className="w-4 h-4 text-brand-green" /> Crop recommendations</li>
+                <li className="flex items-center gap-2"><Sprout className="w-4 h-4 text-brand-green" /> Soil preparation tips</li>
               </ul>
             </div>
 
@@ -82,8 +82,8 @@ export default function SolutionsPage() {
                 We don't just show the temperature. We interpret MSD data to tell you what it means for your specific crops and livestock.
               </p>
               <ul className="space-y-2 text-sm text-brand-dark/60">
-                <li className="flex items-center gap-2"><Sprout className="w-4 h-4 text-brand-cyan"/> Rainfall patterns</li>
-                <li className="flex items-center gap-2"><Sprout className="w-4 h-4 text-brand-cyan"/> Drought alerts</li>
+                <li className="flex items-center gap-2"><Sprout className="w-4 h-4 text-brand-cyan" /> Rainfall patterns</li>
+                <li className="flex items-center gap-2"><Sprout className="w-4 h-4 text-brand-cyan" /> Drought alerts</li>
               </ul>
             </div>
 
@@ -97,8 +97,22 @@ export default function SolutionsPage() {
                 Upload a photo or describe symptoms. Our AI identifies common Zimbabwean pests and suggests approved, sustainable remedies.
               </p>
               <ul className="space-y-2 text-sm text-brand-dark/60">
-                <li className="flex items-center gap-2"><Sprout className="w-4 h-4 text-brand-gold"/> Early detection</li>
-                <li className="flex items-center gap-2"><Sprout className="w-4 h-4 text-brand-gold"/> Integrated Pest Management</li>
+                <li className="flex items-center gap-2"><Sprout className="w-4 h-4 text-brand-gold" /> Early detection</li>
+                <li className="flex items-center gap-2"><Sprout className="w-4 h-4 text-brand-gold" /> Integrated Pest Management</li>
+              </ul>
+            </div>
+            {/* Feature 4: Smart Climate Space */}
+            <div className="bg-brand-surface p-8 rounded-2xl shadow-sm border border-brand-dark/5 hover:shadow-md transition-shadow">
+              <div className="w-14 h-14 bg-brand-green/10 rounded-xl flex items-center justify-center mb-6">
+                <Globe className="w-7 h-7 text-brand-green" />
+              </div>
+              <h3 className="text-xl font-bold text-brand-dark mb-3">Smart Climate Space</h3>
+              <p className="text-brand-dark/80 mb-4">
+                An interconnected digital ecosystem where youth, creatives, and tech enthusiasts collaborate on building and deploying climate resilience solutions.
+              </p>
+              <ul className="space-y-2 text-sm text-brand-dark/60">
+                <li className="flex items-center gap-2"><Sprout className="w-4 h-4 text-brand-green" /> Open collaboration</li>
+                <li className="flex items-center gap-2"><Sprout className="w-4 h-4 text-brand-green" /> Smart integrations</li>
               </ul>
             </div>
           </div>
@@ -109,55 +123,55 @@ export default function SolutionsPage() {
       <Section variant="white">
         <Container>
           <div className="bg-brand-dark rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden">
-             {/* Decorative background element */}
-             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
-             
-             <div className="relative z-10 flex flex-col md:flex-row gap-12 items-start">
-               <div className="flex-1">
-                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-gold/20 text-brand-gold rounded-full text-sm font-bold mb-6 border border-brand-gold/30">
-                   <ShieldAlert className="w-4 h-4" /> Ethical AI Guardrails
-                 </div>
-                 <h2 className="text-3xl font-bold font-heading mb-6">Responsible Innovation.</h2>
-                 <p className="text-lg text-white/80 mb-6">
-                   We believe technology must be safe to be useful. Climate Space AI is built with strict operational boundaries to protect our users.
-                 </p>
-                 <Button href="/about" variant="outline" className="text-white border-white hover:bg-white hover:text-brand-dark">
-                   Read our Tech Policy
-                 </Button>
-               </div>
-               
-               <div className="flex-1 bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-sm">
-                 <ul className="space-y-4">
-                   <li className="flex gap-4">
-                     <div className="w-6 h-6 rounded-full bg-brand-green flex items-center justify-center flex-shrink-0 mt-1">
-                       <span className="text-xs font-bold text-white">1</span>
-                     </div>
-                     <div>
-                       <h4 className="font-bold text-white">No Real-Time Forecasting</h4>
-                       <p className="text-sm text-white/60">We rely on official MSD forecasts, avoiding AI hallucinations regarding immediate weather events.</p>
-                     </div>
-                   </li>
-                   <li className="flex gap-4">
-                     <div className="w-6 h-6 rounded-full bg-brand-green flex items-center justify-center flex-shrink-0 mt-1">
-                       <span className="text-xs font-bold text-white">2</span>
-                     </div>
-                     <div>
-                       <h4 className="font-bold text-white">Source Prioritization</h4>
-                       <p className="text-sm text-white/60">Our model prioritizes Zimbabwean data sources (Agritex, local research) over generic global data.</p>
-                     </div>
-                   </li>
-                   <li className="flex gap-4">
-                     <div className="w-6 h-6 rounded-full bg-brand-green flex items-center justify-center flex-shrink-0 mt-1">
-                       <span className="text-xs font-bold text-white">3</span>
-                     </div>
-                     <div>
-                       <h4 className="font-bold text-white">Advisory, Not Law</h4>
-                       <p className="text-sm text-white/60">AI provides information, not legal or medical advice. Critical decisions should always involve human experts.</p>
-                     </div>
-                   </li>
-                 </ul>
-               </div>
-             </div>
+            {/* Decorative background element */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+
+            <div className="relative z-10 flex flex-col md:flex-row gap-12 items-start">
+              <div className="flex-1">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-gold/20 text-brand-gold rounded-full text-sm font-bold mb-6 border border-brand-gold/30">
+                  <ShieldAlert className="w-4 h-4" /> Ethical AI Guardrails
+                </div>
+                <h2 className="text-3xl font-bold font-heading mb-6">Responsible Innovation.</h2>
+                <p className="text-lg text-white/80 mb-6">
+                  We believe technology must be safe to be useful. Climate Space AI is built with strict operational boundaries to protect our users.
+                </p>
+                <Button href="/about" variant="outline" className="text-white border-white hover:bg-white hover:text-brand-dark">
+                  Read our Tech Policy
+                </Button>
+              </div>
+
+              <div className="flex-1 bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-sm">
+                <ul className="space-y-4">
+                  <li className="flex gap-4">
+                    <div className="w-6 h-6 rounded-full bg-brand-green flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-xs font-bold text-white">1</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">No Real-Time Forecasting</h4>
+                      <p className="text-sm text-white/60">We rely on official MSD forecasts, avoiding AI hallucinations regarding immediate weather events.</p>
+                    </div>
+                  </li>
+                  <li className="flex gap-4">
+                    <div className="w-6 h-6 rounded-full bg-brand-green flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-xs font-bold text-white">2</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">Source Prioritization</h4>
+                      <p className="text-sm text-white/60">Our model prioritizes Zimbabwean data sources (Agritex, local research) over generic global data.</p>
+                    </div>
+                  </li>
+                  <li className="flex gap-4">
+                    <div className="w-6 h-6 rounded-full bg-brand-green flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-xs font-bold text-white">3</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-white">Advisory, Not Law</h4>
+                      <p className="text-sm text-white/60">AI provides information, not legal or medical advice. Critical decisions should always involve human experts.</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </Container>
       </Section>
