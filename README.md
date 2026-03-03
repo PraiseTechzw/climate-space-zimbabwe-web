@@ -1,84 +1,136 @@
-<div align="center">
-  <img src="./public/logo.png" alt="Climate Space Zimbabwe Logo" width="300" />
+# Module 1: AI & Core Engine - Climate Space Agri-Search
 
-  # Climate Space Zimbabwe
-  ### *Climate Action meets Intelligence*
-
-  [Product Catalog](./docs/PRODUCTS.md) • [Development Setup](./docs/SETUP.md) • [Architecture](./docs/ARCHITECTURE.md)
-
-  [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
-  [![Next.js](https://img.shields.io/badge/Framework-Next.js%2014-black)](https://nextjs.org/)
-  [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS-blue)](https://tailwindcss.com/)
-  [![TypeScript](https://img.shields.io/badge/Language-TypeScript-blue)](https://www.typescriptlang.org/)
-</div>
-
----
-
-## 🌍 The Mission
-
-**Climate Space Zimbabwe** is a youth-led movement fusing **Artificial Intelligence** with **Creative Arts** to build climate resilience in Zimbabwe. We transform complex environmental data into actionable insights for farmers and compelling narratives for the public.
-
-## 💡 Core Pillars (Hurudzai AI)
-
-Our platform serves as an ecosystem for climate intelligence:
-
-*   **🌾 Smart Agriculture**: The *Agri-Search Engine* provides localized planting advice and pest identification tuned for Zimbabwe's agro-ecological zones.
-*   **🎨 Creative Advocacy**: Our *Creative Space* uses digital art and storytelling to drive environmental awareness and community action.
-*   **📚 Knowledge Democracy**: A centralized *Climate Library* providing students and researchers with accessible environmental reports.
-
-## 🛠️ Tech Stack
-
-Built for performance and accessibility on local networks:
-
-- **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) with a custom design system
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Components**: Custom-built using Radix UI primitives for accessibility
-- **Fonts**: Inter (UI) & Plus Jakarta Sans (Headings)
-
-## 📁 Architecture Overview
+## Architecture Diagram (Components & Data Flow)
 
 ```text
-├── docs/               # Detailed strategy, branding, and technical specs
-├── public/             # Optimized brand assets and 3D icons
-├── src/
-│   ├── app/            # Pages, layouts, and global styles
-│   ├── components/     # UI library and feature-specific components
-│   └── lib/            # Shared logic and utility functions
-└── tailwind.config.ts  # Design system tokens (Green, Gold, Cyan palette)
+[Frontend / Client] 
+      │ 
+      ├──> POST /api/ai/pest (Image)  --> [AgentOrchestrator]
+      │                                       ├──> [PestVisionAgent] (Tool: cvInfer)
+      │                                       └──> [AgronomyAnswerAgent]
+      │
+      ├──> POST /api/ai/search (Query + Location) --> [AgentOrchestrator]
+      │                                                   │
+      │                                                   ├──> 1. [WeatherAgent] (Tool: weatherFetch) -> Snapshot
+      │                                                   ├──> 2. [RetrievalAgent] (Tool: vectorSearch) -> RAG Context
+      │                                                   │
+      │                                                   └──> 3. [AgronomyAnswerAgent]
+      │                                                             └──> [IntelligentRouter]
+      │                                                                    ├──> Filter by capabilities (JSON/Vision)
+      │                                                                    ├──> Circuit breaker checks
+      │                                                                    └──> Selects Provider (OpenAI/Anthropic/Meta/Ollama/Gemini)
+      │
+      └──> 4. [PolicyGuardAgent] -> Validate output (Safety, Cites, Hallucinated Climate Check)
+                  │
+                  └──> Final JSON Response -> [Frontend]
 ```
 
-## 🚦 Quick Start
+## Setup Env Vars
 
-### 1. Prerequisite
-Ensure you have **Node.js 18+** and **npm/pnpm** installed.
+Create a `.env.local` file with the following configurations:
 
-### 2. Installation
-```bash
-git clone https://github.com/PraiseTechzw/climate-space-zimbabwe-web.git
-cd climate-space-zimbabwe-web
-npm install
+```env
+# Cloud Providers
+OPENAI_API_KEY=sk-...
+ANTHROPIC_API_KEY=sk-...
+GEMINI_API_KEY=AIza...
+
+# Meta/OpenAI Compatible
+META_API_KEY=sk-...
+META_BASE_URL=https://api.meta-compatible.com/v1
+
+# Local Llama Runtime
+OLLAMA_BASE_URL=http://127.0.0.1:11434
+
+# Vector DB
+SUPABASE_URL=https://xyz.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=ey...
+
+# Router Options
+AI_PRIVACY_MODE_DEFAULT=false    # Set true to enforce 'local_only' models
+AI_ROUTER_POLICY_DEFAULT=balanced # "local_first", "lowest_cost", "highest_quality"
+
+# Health check admin
+ADMIN_SECRET=super_secret_token
 ```
 
-### 3. Running Locally
+## Extensible Agent System
+
+The core engine contains self-contained agents that hold precise logic with explicitly allowed tools:
+- **RetrievalAgent**: Maps search semantics to Agritex pgvector storage. Can only use `vectorSearch`.
+- **WeatherAgent**: Looks up location bounding boxes and fetches real-time climate data. Can only use `weatherFetch`.
+- **PestVisionAgent**: Detects objects natively safely.
+- **AgronomyAnswerAgent**: Merges contexts into structured JSON formatting. No IO tool access.
+- **PolicyGuardAgent**: Uses hard regex and logic layers to strip out dangerous content / enforce required RAG citations.
+
+## Extensible AI Router
+
+The engine leverages `IProvider` logic enabling us to swap adapters trivially:
+- **OpenAI**: Primary fallback for High Quality / Tools
+- **Anthropic (Claude)**: Cheap summarizing + Classifying
+- **Gemini**: Cheap Multimodal vision mapping
+- **Meta/Llama**: Used iteratively when configured
+- **Ollama**: Enforced strictly for `PrivacyTier: "local_only"` runs.
+
+## Running Data & Example `curl`
+
+### Run Dev Server
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) to see the application.
 
-## 🤝 Contributing
+### Search Endpoint Query
+**Request:**
+```bash
+curl -X POST http://localhost:3000/api/ai/search \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "userQuery": "When should I plant maize and how much fertilizer do I need?",
+    "location": "Mashonaland West",
+    "crop": "Maize"
+  }'
+```
 
-We are an open-participation movement. Whether you are a developer, artist, or climate researcher, your voice matters. 
+**Response:**
+*(Trace output is `undefined` in production safely mapping traces only to devs)*
+```json
+{
+  "answerMarkdown": "According to [Source 1], Maize should be planted between November 15 and December 15 in Zimbabwe. Apply Compound D fertilizer at 300kg/ha at planting.",
+  "actionChecklist": [
+    "Secure Compound D Fertilizer",
+    "Prepare field by November 1"
+  ],
+  "citations": [
+    {
+      "title": "Agritex Maize Production Manual",
+      "pageOrSection": "Page 12"
+    }
+  ],
+  "confidenceLevel": "high",
+  "followUpQuestions": [
+    "How much fertilizer do I need applied next?",
+    "When is the best time to irrigate?"
+  ],
+  "usedWeather": false,
+  "weatherNote": "Weather unavailable",
+  "providerTrace": "openai"
+}
+```
 
-- Review our **[Contributing Guidelines](CONTRIBUTING.md)**.
-- Check our **[Governance Structure](./docs/GOVERNANCE_STRUCTURE.md)** for ethics and leadership protocols.
+### Server Health & AI Circuit Breakers
+```bash
+curl -H "Authorization: Bearer super_secret_token" http://localhost:3000/api/ai/health
+```
 
-## 📄 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
----
-<div align="center">
-  Built with ❤️ for a Greener Zimbabwe.
-</div>
-
+**Response:**
+```json
+{
+  "health": {
+    "openai": "ok",
+    "anthropic": "ok",
+    "gemini": "circuit_open",
+    "ollama": "ok",
+    "meta": "ok"
+  }
+}
+```
